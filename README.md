@@ -149,17 +149,17 @@ i-learn-networking/
 
 ```mermaid
 flowchart TD
-    A[Phase 0<br/>Networking Mindset]
-    B[Phase 1<br/>Networking Fundamentals]
-    C[Phase 2<br/>Internet & DNS]
-    D[Phase 3<br/>TCP & Connections]
-    E[Phase 4<br/>HTTP / HTTPS]
-    F[Phase 5<br/>Databases & Networking]
-    G[Phase 6<br/>Cloud Networking]
-    H[Phase 7<br/>Data Platform Networking]
-    I[Phase 8<br/>Debugging Masterclass]
-    J[Phase 9<br/>Production Case Studies]
-    K[Phase 10<br/>Hero Level]
+    A["Phase 0<br/>Networking Mindset"]
+    B["Phase 1<br/>Networking Fundamentals"]
+    C["Phase 2<br/>Internet & DNS"]
+    D["Phase 3<br/>TCP & Connections"]
+    E["Phase 4<br/>HTTP / HTTPS"]
+    F["Phase 5<br/>Databases & Networking"]
+    G["Phase 6<br/>Cloud Networking"]
+    H["Phase 7<br/>Data Platform Networking"]
+    I["Phase 8<br/>Debugging Masterclass"]
+    J["Phase 9<br/>Production Case Studies"]
+    K["Phase 10<br/>Hero Level"]
 
     A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K
 ```

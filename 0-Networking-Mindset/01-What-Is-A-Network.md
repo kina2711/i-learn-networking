@@ -60,14 +60,14 @@ Ví dụ đường đi của một truy vấn từ máy cá nhân đến một d
 
 ```mermaid
 flowchart TD
-    A[Laptop]
-    B[Modem/Router tại nhà hoặc văn phòng]
-    C[Mạng Internet<br/>(ISP, nhiều router trung gian)]
-    D[Cloud Load Balancer]
-    E[Mạng riêng trên cloud (VPC)]
-    F[Dịch vụ Data Warehouse / API]
+    A["Laptop"]
+    B["Modem/Router tại nhà hoặc văn phòng"]
+    C["Mạng Internet<br/>(ISP, nhiều router trung gian)"]
+    D["Cloud Load Balancer"]
+    E["Mạng riêng trên cloud (VPC)"]
+    F["Dịch vụ Data Warehouse / API"]
 
-    A -->|WiFi / Ethernet| B
+    A -->|"WiFi / Ethernet"| B
     B --> C
     C --> D
     D --> E
@@ -133,11 +133,11 @@ Hình dung đơn giản:
 
 ```mermaid
 flowchart TD
-    A[Tầng ứng dụng<br/>(BI tool, Spark, Kafka, DB...)]
-    B[Giao thức ứng dụng<br/>(HTTP, giao thức DB...)]
-    C[Tầng vận chuyển<br/>(TCP / UDP)]
-    D[Tầng mạng<br/>(IP)]
-    E[Tầng liên kết<br/>(Ethernet / WiFi ...)]
+    A["Tầng ứng dụng<br/>(BI tool, Spark, Kafka, DB...)"]
+    B["Giao thức ứng dụng<br/>(HTTP, giao thức DB...)"]
+    C["Tầng vận chuyển<br/>(TCP / UDP)"]
+    D["Tầng mạng<br/>(IP)"]
+    E["Tầng liên kết<br/>(Ethernet / WiFi ...)"]
 
     A --> B --> C --> D --> E
 ```
@@ -149,9 +149,9 @@ Ví dụ pipeline streaming:
 
 ```mermaid
 flowchart LR
-    A[API nguồn] -->|HTTP| B[Kafka Broker]
-    B -->|TCP| C[Spark Streaming Job]
-    C -->|JDBC / HTTP| D[Data Warehouse<br/>(Snowflake/BigQuery)]
+    A["API nguồn"] -->|"HTTP"| B["Kafka Broker"]
+    B -->|"TCP"| C["Spark Streaming Job"]
+    C -->|"JDBC / HTTP"| D["Data Warehouse<br/>(Snowflake/BigQuery)"]
 ```
 
 - Mỗi mũi tên biểu diễn một đoạn kết nối mạng (network hop).
@@ -166,14 +166,14 @@ Ví dụ: công cụ BI trên máy tính cá nhân truy vấn BigQuery:
 
 ```mermaid
 flowchart TD
-    A[Công cụ BI trên laptop]
-    B[Router tại nhà hoặc văn phòng]
-    C[Cân bằng tải<br/>của nhà cung cấp cloud]
-    D[Dịch vụ BigQuery]
+    A["Công cụ BI trên laptop"]
+    B["Router tại nhà hoặc văn phòng"]
+    C["Cân bằng tải<br/>của nhà cung cấp cloud"]
+    D["Dịch vụ BigQuery"]
 
-    A -->|1. Tra cứu DNS<br/>"bigquery.googleapis.com" → IP| B
-    B -->|2. Truyền qua hạ tầng ISP<br/>và nhiều router trên Internet| C
-    C -->|3. Mạng nội bộ trên cloud<br/>(VPC, service mesh... )| D
+    A -->|"1. Tra cứu DNS<br/>'bigquery.googleapis.com' → IP"| B
+    B -->|"2. Truyền qua hạ tầng ISP<br/>và nhiều router trên Internet"| C
+    C -->|"3. Mạng nội bộ trên cloud<br/>(VPC, service mesh... )"| D
 ```
 
 **Các điểm dễ phát sinh vấn đề:**
@@ -186,10 +186,10 @@ Ví dụ pipeline: API → Kafka → Spark → Postgres, điều phối bởi Ai
 
 ```mermaid
 flowchart LR
-    A[API nguồn] -->|Internet| B[Kafka Cluster (VPC A)]
-    B -->|Kết nối giữa VPC<br/>(VPC peering / Private Link)| C[Spark Cluster (VPC B)]
-    C -->|JDBC| D[Máy chủ Postgres]
-    D --> E[Airflow Scheduler]
+    A["API nguồn"] -->|"Internet"| B["Kafka Cluster (VPC A)"]
+    B -->|"Kết nối giữa VPC<br/>(VPC peering / Private Link)"| C["Spark Cluster (VPC B)"]
+    C -->|"JDBC"| D["Máy chủ Postgres"]
+    D --> E["Airflow Scheduler"]
 ```
 
 Khi các task của Airflow thất bại hoặc job Spark bị timeout, cần xem xét không chỉ mã nguồn mà cả sơ đồ mạng ở phía sau.
@@ -254,9 +254,9 @@ Một truy vấn gửi từ công cụ BI chạy lâu hơn bình thường và k
 **Hướng phân tích:**
 ```mermaid
 flowchart LR
-    A[BI Tool] -->|Tra cứu DNS| B[Resolver]
-    B -->|TCP/TLS| C[Cổng vào dịch vụ cloud / Load Balancer]
-    C -->|Gọi nội bộ| D[Dịch vụ Data Warehouse]
+    A["BI Tool"] -->|"Tra cứu DNS"| B["Resolver"]
+    B -->|"TCP/TLS"| C["Cổng vào dịch vụ cloud / Load Balancer"]
+    C -->|"Gọi nội bộ"| D["Dịch vụ Data Warehouse"]
 ```
 > Cách kiểm tra: chạy lại truy vấn từ môi trường khác (ví dụ VM trong cùng region), kết hợp đo kiểm kết nối bằng `ping`, `curl`.
 
