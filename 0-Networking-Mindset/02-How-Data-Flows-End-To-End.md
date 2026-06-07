@@ -149,16 +149,16 @@ Luồng điển hình:
 
 ```mermaid
 flowchart LR
-    A[BI Tool<br/>(Power BI / Looker / Tableau)]
-    B[DNS Resolver]
-    C[Internet / ISP]
-    D[Cloud Frontend / Load Balancer]
-    E[Mạng nội bộ cloud (VPC)]
-    F[Dịch vụ Data Warehouse]
+    A["BI Tool<br/>(Power BI / Looker / Tableau)"]
+    B["DNS Resolver"]
+    C["Internet / ISP"]
+    D["Cloud Frontend / Load Balancer"]
+    E["Mạng nội bộ cloud (VPC)"]
+    F["Dịch vụ Data Warehouse"]
 
-    A -->|Truy vấn DNS| B
-    B -->|Trả IP| A
-    A -->|TCP + (TLS) đến IP:443| C
+    A -->|"Truy vấn DNS"| B
+    B -->|"Trả IP"| A
+    A -->|"TCP + (TLS) đến IP:443"| C
     C --> D --> E --> F
 ```
 
@@ -179,16 +179,16 @@ Ví dụ một pipeline dữ liệu event / log:
 
 ```mermaid
 flowchart LR
-    A[Airflow Task<br/>(HttpOperator)]
-    B[REST Data API]
-    C[Kafka Cluster]
-    D[Spark Streaming Job]
-    E[Data Warehouse]
+    A["Airflow Task<br/>(HttpOperator)"]
+    B["REST Data API"]
+    C["Kafka Cluster"]
+    D["Spark Streaming Job"]
+    E["Data Warehouse"]
 
-    A -->|HTTP request| B
-    B -->|Produce message| C
-    D -->|Consume message| C
-    D -->|JDBC / HTTP| E
+    A -->|"HTTP request"| B
+    B -->|"Produce message"| C
+    D -->|"Consume message"| C
+    D -->|"JDBC / HTTP"| E
 ```
 
 - Airflow gửi HTTP request tới REST API (đã qua DNS, TCP, TLS, HTTP như phần trên).  
@@ -204,14 +204,14 @@ Trong Spark, khi có **shuffle** (group by, repartition, join…), dữ liệu p
 
 ```mermaid
 flowchart LR
-    subgraph Stage1[Map Stage]
-        M1[Executor 1] -->|Shuffle Write| D1[Disk 1]
-        M2[Executor 2] -->|Shuffle Write| D2[Disk 2]
-        M3[Executor 3] -->|Shuffle Write| D3[Disk 3]
+    subgraph Stage1["Map Stage"]
+        M1["Executor 1"] -->|"Shuffle Write"| D1["Disk 1"]
+        M2["Executor 2"] -->|"Shuffle Write"| D2["Disk 2"]
+        M3["Executor 3"] -->|"Shuffle Write"| D3["Disk 3"]
     end
 
-    subgraph Stage2[Reduce Stage]
-        R1[Executor A] -->|Shuffle Read| D1
+    subgraph Stage2["Reduce Stage"]
+        R1["Executor A"] -->|"Shuffle Read"| D1
         R1 --> D2
         R1 --> D3
     end
@@ -317,11 +317,11 @@ Luồng:
 
 ```mermaid
 flowchart LR
-    A[Looker / Power BI] --> B[DNS Resolver]
+    A["Looker / Power BI"] --> B["DNS Resolver"]
     B --> A
-    A --> C[Internet / ISP]
-    C --> D[Google Frontend / LB]
-    D --> E[BigQuery Service]
+    A --> C["Internet / ISP"]
+    C --> D["Google Frontend / LB"]
+    D --> E["BigQuery Service"]
 ```
 
 Khả năng lỗi:
@@ -338,11 +338,11 @@ Luồng:
 
 ```mermaid
 flowchart LR
-    A[Airflow Worker] --> B[DNS Resolver]
+    A["Airflow Worker"] --> B["DNS Resolver"]
     B --> A
-    A --> C[Internet / VPC Peering]
-    C --> D[API Gateway / Load Balancer]
-    D --> E[REST API Service]
+    A --> C["Internet / VPC Peering"]
+    C --> D["API Gateway / Load Balancer"]
+    D --> E["REST API Service"]
 ```
 
 Để debug:
