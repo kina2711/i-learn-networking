@@ -36,26 +36,26 @@ Trong thực tế, phần lớn công việc của Analytics / Data Engineer đ�
 ```mermaid
 flowchart LR
     subgraph Client
-        BI[BI Tools<br/>(Tableau/Looker/Power BI)]
-        NB[Notebook / DBT / Scripts]
+        BI["BI Tools<br/>(Tableau/Looker/Power BI)"]
+        NB["Notebook / DBT / Scripts"]
     end
 
     subgraph Orchestration
-        AF[Airflow / Orchestrator]
+        AF["Airflow / Orchestrator"]
     end
 
     subgraph DataPlatform
-        DW[Data Warehouse<br/>(Snowflake/BigQuery/Redshift)]
-        DB[(PostgreSQL / MySQL)]
-        K[Kafka Cluster]
-        SP[Spark / Databricks]
+        DW["Data Warehouse<br/>(Snowflake/BigQuery/Redshift)"]
+        DB[("PostgreSQL / MySQL")]
+        K["Kafka Cluster"]
+        SP["Spark / Databricks"]
     end
 
-    Client -->|Queries / API| DW
-    Client -->|JDBC/ODBC| DB
-    AF -->|HTTP / JDBC| DW
-    AF -->|HTTP| K
-    AF -->|JDBC| DB
+    Client -->|"Queries / API"| DW
+    Client -->|"JDBC/ODBC"| DB
+    AF -->|"HTTP / JDBC"| DW
+    AF -->|"HTTP"| K
+    AF -->|"JDBC"| DB
     K --> SP
     SP --> DW
     SP --> DB
@@ -139,12 +139,12 @@ Bảng dưới gợi ý “minimum” về networking cho từng mức độ tro
 
 ```mermaid
 flowchart LR
-    subgraph DataFlow[Data Flow]
-        A[Source] --> B[Ingestion] --> C[Processing] --> D[Storage] --> E[BI / Consumer]
+    subgraph DataFlow["Data Flow"]
+        A["Source"] --> B["Ingestion"] --> C["Processing"] --> D["Storage"] --> E["BI / Consumer"]
     end
 
-    subgraph NetFlow[Network Flow]
-        N1[Client] --> N2[DNS] --> N3[Load Balancer] --> N4[Service/API] --> N5[DB/DW]
+    subgraph NetFlow["Network Flow"]
+        N1["Client"] --> N2["DNS"] --> N3["Load Balancer"] --> N4["Service/API"] --> N5["DB/DW"]
     end
 ```
 
@@ -158,10 +158,10 @@ Một sự cố thường nằm ở **giao điểm**: data flow dựa trên netw
 
 ```mermaid
 flowchart TD
-    A[Internet công cộng]
-    B[DMZ / Public Subnet]
-    C[Private Subnet<br/>(App, Kafka, Spark...)]
-    D[Data Subnet<br/>(DW, DB, Storage)]
+    A["Internet công cộng"]
+    B["DMZ / Public Subnet"]
+    C["Private Subnet<br/>(App, Kafka, Spark...)"]
+    D["Data Subnet<br/>(DW, DB, Storage)"]
 
     A --> B --> C --> D
 ```
