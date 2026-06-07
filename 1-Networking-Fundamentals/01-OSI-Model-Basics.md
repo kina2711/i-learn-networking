@@ -48,13 +48,13 @@ Sơ đồ:
 
 ```mermaid
 flowchart TB
-    L7[Layer 7<br/>Application]
-    L6[Layer 6<br/>Presentation]
-    L5[Layer 5<br/>Session]
-    L4[Layer 4<br/>Transport]
-    L3[Layer 3<br/>Network]
-    L2[Layer 2<br/>Data Link]
-    L1[Layer 1<br/>Physical]
+    L7["Layer 7<br/>Application"]
+    L6["Layer 6<br/>Presentation"]
+    L5["Layer 5<br/>Session"]
+    L4["Layer 4<br/>Transport"]
+    L3["Layer 3<br/>Network"]
+    L2["Layer 2<br/>Data Link"]
+    L1["Layer 1<br/>Physical"]
 
     L7 --> L6 --> L5 --> L4 --> L3 --> L2 --> L1
 ```
@@ -184,14 +184,14 @@ Một cách nhớ theo chiều “trên xuống”:
 
 ```mermaid
 flowchart TB
-    A[Ứng dụng<br/>(BI, Airflow, Spark...)]
-    B[Application<br/>(HTTP, SQL, Kafka protocol...)]
-    C[Presentation<br/>(format, mã hóa, nén)]
-    D[Session<br/>(quản lý phiên)]
-    E[Transport<br/>(TCP/UDP)]
-    F[Network<br/>(IP, routing)]
-    G[Data Link<br/>(MAC, frame, switch)]
-    H[Physical<br/>(bit, dây, sóng)]
+    A["Ứng dụng<br/>(BI, Airflow, Spark...)"]
+    B["Application<br/>(HTTP, SQL, Kafka protocol...)"]
+    C["Presentation<br/>(format, mã hóa, nén)"]
+    D["Session<br/>(quản lý phiên)"]
+    E["Transport<br/>(TCP/UDP)"]
+    F["Network<br/>(IP, routing)"]
+    G["Data Link<br/>(MAC, frame, switch)"]
+    H["Physical<br/>(bit, dây, sóng)"]
 
     A --> B --> C --> D --> E --> F --> G --> H
 ```
