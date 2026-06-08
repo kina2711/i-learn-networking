@@ -48,12 +48,12 @@ Sơ đồ tóm tắt:
 
 ```mermaid
 flowchart LR
-    App[Ứng dụng<br/>(Browser, BI, Airflow...)]
-    Stub[Stub resolver<br/>(OS)]
-    Rec[Recursive resolver<br/>(ISP / Company / VPC)]
-    Root[Root DNS]
-    TLD[TLD DNS<br/>(.com, .net, .vn...)]
-    Auth[Authoritative DNS<br/>(zone cụ thể)]
+    App["Ứng dụng<br/>(Browser, BI, Airflow...)"]
+    Stub["Stub resolver<br/>(OS)"]
+    Rec["Recursive resolver<br/>(ISP / Company / VPC)"]
+    Root["Root DNS"]
+    TLD["TLD DNS<br/>(.com, .net, .vn...)"]
+    Auth["Authoritative DNS<br/>(zone cụ thể)"]
 
     App --> Stub --> Rec
     Rec --> Root --> TLD --> Auth

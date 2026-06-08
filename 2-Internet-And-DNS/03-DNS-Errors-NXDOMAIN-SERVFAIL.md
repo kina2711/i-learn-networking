@@ -278,15 +278,15 @@ Giải pháp:
 
 ```mermaid
 flowchart TD
-    A[Ứng dụng báo lỗi DNS] --> B{dig/nslookup<br/>trả NXDOMAIN?}
-    B -->|Có| C[Kiểm tra chính tả hostname<br/>Kiểm tra zone & record\nTừ resolver tương ứng]
-    B -->|Không| D{Status SERVFAIL<br/>hay timeout?}
+    A["Ứng dụng báo lỗi DNS"] --> B{"dig/nslookup<br/>trả NXDOMAIN?"}
+    B -->|"Có"| C["Kiểm tra chính tả hostname<br/>Kiểm tra zone & record\nTừ resolver tương ứng"]
+    B -->|"Không"| D{"Status SERVFAIL<br/>hay timeout?"}
 
-    D -->|SERVFAIL| E[Kiểm tra resolver được dùng\n(resolv.conf, VPC DNS, VPN)\nKiểm tra health/cấu hình DNS server]
-    D -->|Timeout| F[Kiểm tra kết nối tới DNS server\n(firewall, route, VPN, peering)]
-    D -->|NOERROR + empty| G[Kiểm tra type record đang hỏi\n(ví dụ A vs CNAME chain)]
+    D -->|"SERVFAIL"| E["Kiểm tra resolver được dùng\n(resolv.conf, VPC DNS, VPN)\nKiểm tra health/cấu hình DNS server"]
+    D -->|"Timeout"| F["Kiểm tra kết nối tới DNS server\n(firewall, route, VPN, peering)"]
+    D -->|"NOERROR + empty"| G["Kiểm tra type record đang hỏi\n(ví dụ A vs CNAME chain)"]
 
-    C --> H[Kiểm tra TTL & propagation\nnếu vừa mới sửa/đổi DNS]
+    C --> H["Kiểm tra TTL & propagation\nnếu vừa mới sửa/đổi DNS"]
     E --> H
     F --> H
     G --> H
