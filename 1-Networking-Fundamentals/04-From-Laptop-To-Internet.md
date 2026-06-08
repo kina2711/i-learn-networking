@@ -25,14 +25,14 @@ Sau khi hoàn thành module này, người học:
 
 ```mermaid
 flowchart LR
-    A[Laptop<br/>(BI, Browser, CLI...)]
-    B[WiFi Router / Switch<br/>(LAN)]
-    C[Router/NAT của modem]
-    D[ISP / Nhà mạng]
-    E[Internet Backbone]
-    F[Cloud Edge Router]
-    G[Cloud Load Balancer / API Gateway]
-    H[VPC / Private Network<br/>(Service, DB, DW...)]
+    A["Laptop<br/>(BI, Browser, CLI...)"]
+    B["WiFi Router / Switch<br/>(LAN)"]
+    C["Router/NAT của modem"]
+    D["ISP / Nhà mạng"]
+    E["Internet Backbone"]
+    F["Cloud Edge Router"]
+    G["Cloud Load Balancer / API Gateway"]
+    H["VPC / Private Network<br/>(Service, DB, DW...)"]
 
     A --> B --> C --> D --> E --> F --> G --> H
 ```
@@ -170,10 +170,10 @@ tracert 8.8.8.8          # Windows
 
 ```mermaid
 flowchart LR
-    A[Internet] --> B[Edge Router / Firewall]
-    B --> C[Load Balancer / API Gateway]
-    C --> D[VPC Router]
-    D --> E[Private Subnet<br/>(App / DB / DW / Kafka...)]
+    A["Internet"] --> B["Edge Router / Firewall"]
+    B --> C["Load Balancer / API Gateway"]
+    C --> D["VPC Router"]
+    D --> E["Private Subnet<br/>(App / DB / DW / Kafka...)"]
 ```
 
 - **Edge Router / Firewall**:
@@ -206,12 +206,12 @@ Sơ đồ tổng quát:
 
 ```mermaid
 flowchart LR
-    L[Laptop] --> W[WiFi Router / LAN]
-    W --> M[Modem Router / NAT]
-    M --> I[ISP / Internet]
-    I --> CE[Cloud Edge Router]
-    CE --> LB[Cloud Load Balancer]
-    LB --> SV[Service BigQuery / Snowflake<br/>(trong VPC)]
+    L["Laptop"] --> W["WiFi Router / LAN"]
+    W --> M["Modem Router / NAT"]
+    M --> I["ISP / Internet"]
+    I --> CE["Cloud Edge Router"]
+    CE --> LB["Cloud Load Balancer"]
+    LB --> SV["Service BigQuery / Snowflake<br/>(trong VPC)"]
 ```
 
 Luồng logic:
