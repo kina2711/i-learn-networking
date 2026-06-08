@@ -58,10 +58,10 @@ Phiên bản 4 lớp phổ biến:
 
 ```mermaid
 flowchart TB
-    A[Application<br/>(HTTP, DNS, DB protocol...)]
-    B[Transport<br/>(TCP, UDP)]
-    C[Internet<br/>(IP, ICMP, routing)]
-    D[Network Access<br/>(Ethernet, WiFi, MAC, frame...)]
+    A["Application<br/>(HTTP, DNS, DB protocol...)"]
+    B["Transport<br/>(TCP, UDP)"]
+    C["Internet<br/>(IP, ICMP, routing)"]
+    D["Network Access<br/>(Ethernet, WiFi, MAC, frame...)"]
 
     A --> B --> C --> D
 ```
@@ -142,20 +142,20 @@ Bảng ánh xạ phổ biến:
 ```mermaid
 flowchart LR
     subgraph OSI
-        O7[7: Application]
-        O6[6: Presentation]
-        O5[5: Session]
-        O4[4: Transport]
-        O3[3: Network]
-        O2[2: Data Link]
-        O1[1: Physical]
+        O7["7: Application"]
+        O6["6: Presentation"]
+        O5["5: Session"]
+        O4["4: Transport"]
+        O3["3: Network"]
+        O2["2: Data Link"]
+        O1["1: Physical"]
     end
 
     subgraph TCPIP
-        T4[Application]
-        T3[Transport]
-        T2[Internet]
-        T1[Network Access]
+        T4["Application"]
+        T3["Transport"]
+        T2["Internet"]
+        T1["Network Access"]
     end
 
     T4 --> O7
@@ -210,10 +210,10 @@ Trường hợp: BI tool gọi HTTPS đến Snowflake / BigQuery.
 
 ```mermaid
 flowchart LR
-    BI[BI Tool] -->|HTTP/HTTPS<br/>(Application)| L4[TCP<br/>(Transport)]
-    L4 --> L3[IP Routing<br/>(Internet)]
-    L3 --> L1[Ethernet/WiFi<br/>(Network Access)]
-    L1 --> DW[Endpoint DW]
+    BI["BI Tool"] -->|"HTTP/HTTPS<br/>(Application)"| L4["TCP<br/>(Transport)"]
+    L4 --> L3["IP Routing<br/>(Internet)"]
+    L3 --> L1["Ethernet/WiFi<br/>(Network Access)"]
+    L1 --> DW["Endpoint DW"]
 ```
 
 - Application: HTTP/HTTPS API, giao thức riêng của DW.  
